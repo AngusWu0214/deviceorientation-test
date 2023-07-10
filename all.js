@@ -26,25 +26,28 @@
 //         }
 //     })
 function main() {
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission()
-            .then(permissionState => {
-                if (permissionState === 'granted') {
-                    // handle data
-                    alert('sucess')
-                } else {
-                    // handle denied
-                    alert('fail')
-                }
-            })
-            .catch((err) => {
-                alert('err')
-                alert(err)
-            });
-    } else {
-        // han
-        console.log(typeof DeviceOrientationEvent)
-    }
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', function () {
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+                .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        // handle data
+                        alert('sucess')
+                    } else {
+                        // handle denied
+                        alert('fail')
+                    }
+                })
+                .catch((err) => {
+                    alert('err')
+                    alert(err)
+                });
+        } else {
+            // han
+            console.log(typeof DeviceOrientationEvent)
+        }
+    })
 }
 function onScreenOchangeEvent(e) {
     alert('E');
