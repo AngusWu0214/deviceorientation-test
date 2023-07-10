@@ -28,7 +28,6 @@
 function main() {
     const btn = document.getElementById('btn');
     btn.addEventListener('click', function () {
-        console.log('click')
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             DeviceOrientationEvent.requestPermission()
                 .then(permissionState => {
@@ -44,6 +43,18 @@ function main() {
                             a.innerHTML = Math.round(alpha);
                             b.innerHTML = Math.round(beta);
                             g.innerHTML = Math.round(gamma);
+
+                        }, false);
+                        window.addEventListener('devicemotion', function (event) {
+                            var x = event.acceleration.x,
+                                y = event.acceleration.y,
+                                z = event.acceleration.z,
+                                domX = document.getElementById('x'),
+                                domY = document.getElementById('y'),
+                                domZ = document.getElementById('z')
+                            domX.innerHTML = Math.round(x);
+                            domY.innerHTML = Math.round(y);
+                            domZ.innerHTML = Math.round(z);
 
                         }, false);
                     } else {
