@@ -28,6 +28,7 @@
 function main() {
     const btn = document.getElementById('btn');
     btn.addEventListener('click', function () {
+        console.log('click')
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             DeviceOrientationEvent.requestPermission()
                 .then(permissionState => {
@@ -46,6 +47,7 @@ function main() {
         } else {
             // han
             console.log(typeof DeviceOrientationEvent)
+            alert('mobile')
         }
     })
 }
