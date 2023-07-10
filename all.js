@@ -27,10 +27,10 @@
 //     })
 function main() {
     if (
-        window.DeviceOrientationEvent !== undefined &&
-        typeof window.DeviceOrientationEvent.requestPermission === 'function'
+        DeviceOrientationEvent !== undefined &&
+        typeof DeviceOrientationEvent.requestPermission === 'function'
     ) {
-        window.DeviceOrientationEvent.requestPermission()
+        DeviceOrientationEvent.requestPermission()
             .then(function (res) {
                 if (res == 'granted') {
                     window.addEventListener(
