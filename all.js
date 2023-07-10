@@ -26,32 +26,24 @@
 //         }
 //     })
 function main() {
-    if (
-        DeviceOrientationEvent !== undefined &&
-        typeof DeviceOrientationEvent.requestPermission === 'function'
-    ) {
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
         DeviceOrientationEvent.requestPermission()
-            .then(function (res) {
-                alert(res)
-                if (res == 'granted') {
-                    window.addEventListener(
-                        'orientationchange',
-                        onScreenOchangeEvent,
-                        false
-                    );
-                    window.addEventListener(
-                        'deviceorientation',
-                        onDeviceOchangeEvent,
-                        false
-                    );
+            .then(permissionState => {
+                if (permissionState === 'granted') {
+                    // handle data
+                    alert('sucess')
+                } else {
+                    // handle denied
+                    alert('fail')
                 }
             })
-            .catch(function (err) {
-                alert('error', err);
+            .catch((err) => {
+                alert('err')
+                alert(err)
             });
     } else {
-        window.addEventListener('orientationchange', onScreenOchangeEvent, false);
-        window.addEventListener('deviceorientation', onDeviceOchangeEvent, false);
+        // han
+        console.log(typeof DeviceOrientationEvent)
     }
 }
 function onScreenOchangeEvent(e) {
