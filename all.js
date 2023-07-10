@@ -27,36 +27,36 @@
 //     })
 function main() {
     if (
-      window.DeviceOrientationEvent !== undefined &&
-      typeof window.DeviceOrientationEvent.requestPermission === 'function'
+        window.DeviceOrientationEvent !== undefined &&
+        typeof window.DeviceOrientationEvent.requestPermission === 'function'
     ) {
-      window.DeviceOrientationEvent.requestPermission()
-        .then(function (res) {
-          if (res == 'granted') {
-            window.addEventListener(
-              'orientationchange',
-              onScreenOchangeEvent,
-              false
-            );
-            window.addEventListener(
-              'deviceorientation',
-              onDeviceOchangeEvent,
-              false
-            );
-          }
-        })
-        .catch(function (err) {
-          alert('error');
-        });
+        window.DeviceOrientationEvent.requestPermission()
+            .then(function (res) {
+                if (res == 'granted') {
+                    window.addEventListener(
+                        'orientationchange',
+                        onScreenOchangeEvent,
+                        false
+                    );
+                    window.addEventListener(
+                        'deviceorientation',
+                        onDeviceOchangeEvent,
+                        false
+                    );
+                }
+            })
+            .catch(function (err) {
+                alert('error', err);
+            });
     } else {
-      window.addEventListener('orientationchange', onScreenOchangeEvent, false);
-      window.addEventListener('deviceorientation', onDeviceOchangeEvent, false);
+        window.addEventListener('orientationchange', onScreenOchangeEvent, false);
+        window.addEventListener('deviceorientation', onDeviceOchangeEvent, false);
     }
-  }
-  function onScreenOchangeEvent(e) {
+}
+function onScreenOchangeEvent(e) {
     alert('E');
-  }
-  function onDeviceOchangeEvent(e) {
+}
+function onDeviceOchangeEvent(e) {
     alert('E');
-  }
-  main();
+}
+main();
