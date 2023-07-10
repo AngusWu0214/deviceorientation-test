@@ -46,6 +46,7 @@ function main() {
 
                         }, false);
                         window.addEventListener('devicemotion', function (event) {
+                            // 加速度
                             var x = event.acceleration.x,
                                 y = event.acceleration.y,
                                 z = event.acceleration.z,
@@ -55,7 +56,26 @@ function main() {
                             domX.innerHTML = Math.round(x);
                             domY.innerHTML = Math.round(y);
                             domZ.innerHTML = Math.round(z);
-
+                            // 加速度含重力參數
+                            var gx = event.accelerationIncludingGravity.x,
+                                gy = event.accelerationIncludingGravity.y,
+                                gz = event.accelerationIncludingGravity.z,
+                                domGX = document.getElementById('gx'),
+                                domGY = document.getElementById('gy'),
+                                domGZ = document.getElementById('gz')
+                            domGX.innerHTML = Math.round(gx);
+                            domGY.innerHTML = Math.round(gy);
+                            domGZ.innerHTML = Math.round(gz);
+                            // 旋轉率
+                            var rx = event.rotationRate.alpha,
+                                ry = event.rotationRate.beta,
+                                rz = event.rotationRate.gamma,
+                                domRX = document.getElementById('rx'),
+                                domRY = document.getElementById('ry'),
+                                domRZ = document.getElementById('rz')
+                            domRX.innerHTML = Math.round(rx);
+                            domRY.innerHTML = Math.round(ry);
+                            domRZ.innerHTML = Math.round(rz);
                         }, false);
                     } else {
                         // handle denied
